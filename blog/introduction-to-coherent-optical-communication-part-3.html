@@ -74,8 +74,8 @@
         <div class="col-lg-8 col-md-10 mx-auto">
           <p>Things I hope you learn from this post series:</p>
           <ul>
-            <li><a href='/blog/introduction-to-coherent-optical-communication-with-silicon-photonics-part-1.html'>Part 1: Why do we use fiber optic cables?</a></li>
-            <li><a href='/blog/introduction-to-coherent-optical-communication-with-silicon-photonics-part-2.html'>Part 2: What is a fiber?</a></li>
+            <li><a href='/blog/introduction-to-coherent-optical-communication-part-1.html'>Part 1: Why do we use fiber optic cables?</a></li>
+            <li><a href='/blog/introduction-to-coherent-optical-communication-part-2.html'>Part 2: What is a fiber?</a></li>
             <li>Part 3 (you are here): The very basics of optical communication, but also some super advanced stuff</li>
           </ul>
 
@@ -132,7 +132,7 @@
 
           <img src='/img/opt-comm-blog-post/coherent-detector.png' class="mx-auto d-block" style="width: 75%;">
 
-          <p>Coming back to that lithium niobate modulator, we can see we already have an electrooptic mechanism to change optical phase. In this case, the phase change is directly related to the voltage</p>
+          <p>Coming back to that lithium niobate modulator, we can see we already have an electrooptic mechanism to change optical phase. In this case, the phase change is directly related to the voltage.</p>
 
           <img src='/img/opt-comm-blog-post/phase-mod.png' class="mx-auto d-block" style="width: 75%;">
 
@@ -140,7 +140,7 @@
 
           <img src='/img/opt-comm-blog-post/psk.png' class="mx-auto d-block" style="width: 75%;">
 
-          <p>And just as before, we can apply multilevel voltage inputs to our phase modulator to create multilevel phase outputs. Similar to 4-ASK, we can create a 4-PSK signal.</p>
+          <p>And just as before, we can apply multilevel voltage inputs to our phase modulator to create multilevel phase outputs. Similar to 4-ASK, we can create a 4-PSK signal. In practice, we use a more complicated optical structure to modulate phase, rather than a simple linear phase shifter. Perhaps I will describe how this is done in some future blog post.</p>
 
           <img src='/img/opt-comm-blog-post/4-psk.png' class="mx-auto d-block" style="width: 75%;">
 
@@ -160,7 +160,7 @@
 
           <img src='/img/opt-comm-blog-post/64-qam.png' class="mx-auto d-block" style="width: 75%;">
 
-          <p>The concept of "until the points start to blur together" is important. Nothing in life is perfect (except, perhaps, April 25th), and so there will always be "noise" on our signal going into the receiver. We can never drive the amplitudes and phases exactly right, and the electronics themselves create random fluctuations in our signals. You could imagine that for 64-QAM, if all the points are too fuzzy, you couldn't tell one point from another. The amount of "signal" we have compared to the amount of fuzziness, or "noise" is often expressed as a signal-to-noise ratio (SNR). Claude Shannon famously described an upper limit to how much information could theoretically be transmitted in a link given some (SNR) of the received signal. Coherent communication gets us pretty close to that theoretical limit--within a factor of 5 or so demonstrated in 2010.</p>
+          <p>The concept of "until the points start to blur together" is important. Nothing in life is perfect (except, perhaps, April 25th), and so there will always be "noise" on our signal going into the receiver. We can never drive the amplitudes and phases exactly right, and the electronics themselves create random fluctuations in our signals. You could imagine that for 64-QAM, if all the points are too fuzzy, you couldn't tell one point from another. The amount of "signal" we have compared to the amount of fuzziness, or "noise," is often expressed as a signal-to-noise ratio (SNR). Claude Shannon famously described an upper limit to how much information could theoretically be transmitted in a link given some (SNR) of the received signal. Coherent communication gets us pretty close to that theoretical limit--within a factor of 5 or so demonstrated in 2010.</p>
 
           <img src='/img/opt-comm-blog-post/shannon-limit.png' class="mx-auto d-block" style="width: 100%;">
           <figcaption style="font-size: small;">Yan, L-S., X. Liu, and W. Shieh. "Toward the Shannon limit of spectral efficiency." IEEE Photonics Journal 3.2 (2011): 325-330</figcaption>
@@ -169,12 +169,12 @@
         
           <img src='/img/opt-comm-blog-post/probabilistically-shaped.png' class="mx-auto d-block" style="width: 75%;">
 
-          <p>Looking back at the last 150 years of long-distance communication and 40 years of optical communication, and the scaling factor is astounding. A variety of fundamental breakthroughs over the years has enabled a roughly yearly doubling in the capacity of our communications systems (expressed in those now-familiar-to-you terms of switching speed times distance product).</p>
+          <p>Looking back at the last 150 years of long-distance communication and 40 years of optical communication, the scaling factor is astounding. A variety of fundamental breakthroughs over the years has enabled a roughly yearly doubling in the capacity of our communications systems (expressed in those now-familiar-to-you terms of data rate times distance product).</p>
 
           <img src='/img/opt-comm-blog-post/comm-scaling.png' class="mx-auto d-block" style="width: 100%;">
           <figcaption style="font-size: small;">(left) G. P. Agrawal, Fiber-Optic Communication Systems. John Wiley & Sons, Inc., Oct. 2010. <br>(right) H. Kogelnik, “High-capacity optical communications: personal recollections,” IEEE Journal of Selected Topics in Quantum Electronics, vol. 6, no. 6, pp. 1279–1286, Nov. 2000 </figcaption>
 
-          <p>And what is actually deployed has kept close pace with research. The first systems deployed into the internet that you know often follow the first research demonstration within about 4 years. The modulation formats we just talked about are very likely carrying these text characters to your computer. 4-PSK (also known as QPSK) at 100 Gbps was first deployed in 2010, with 16-QAM systems operating at 200 Gbps being deployed shortly thereafter in 2013. In 2020, there are published results in excess of 1 Tbps on a single color, and more than 100 Tbps total in a single fiber.</p>
+          <p>What is actually deployed in the field has kept close pace with research. The first systems deployed into the internet that you know often follow the first research demonstration within about 4 years. The modulation formats we just talked about are very likely carrying these text characters to your computer. 4-PSK (also known as QPSK) at 100 Gbps was first deployed in 2010, with 16-QAM systems operating at 200 Gbps being deployed shortly thereafter in 2013. In 2020, there are published results in excess of 1 Tbps on a single wavelength, and more than 100 Tbps total in a single fiber.</p>
 
           <img src='/img/opt-comm-blog-post/transmission-capacity-research.png' class="mx-auto d-block" style="width: 100%;">
           <figcaption style="font-size: small;">P. Winzer, D. T. Neilson, and A. R. Chraplyvy, "Fiber-optic Networking Transmission and Networking: The Previous 20 and the Next 20 years", Opt. Exp. 26(18), 2018</figcaption>
@@ -183,6 +183,8 @@
 
           <img src='/img/opt-comm-blog-post/access-scaling.png' class="mx-auto d-block" style="width: 75%;">
           <figcaption style="font-size: small;">P. Vetter, “The future of broadband access,” in The Future X Network. Boca Raton, FL, USA: CRC Press, 2016.<br>J. Nielsen, “Nielsen’s Law of Internet Bandwidth,” Apr. 5, 1998. [On- line]. Available: https://www.nngroup.com/articles/law-of-bandwidth/</figcaption>
+
+          <p>As I read back through this post series, there are hundreds of neat little details that I glossed over that all deserve their own dedicated post. I hope this post series was useful/informative/not-factually-incorrect for you. Feel free to email me any comments!</p>
 
         </div>
       </div>
