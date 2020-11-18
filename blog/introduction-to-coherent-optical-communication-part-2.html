@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <script async defer data-website-id="bad1567f-ffde-4b0e-adec-3232b5028e98" src="https://analytics.chemecse.io/umami.js"></script>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <title>An Introduction to Coherent Optical Communication</title>
+
+  <!-- Bootstrap core CSS -->
+  <link href="/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Custom fonts for this template -->
+  <link href="/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+  <link href='https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+
+  <!-- Custom styles for this template -->
+  <link href="/css/clean-blog.min.css" rel="stylesheet">
+
+</head>
+
+<body>
+
+  <!-- Navigation -->
+  <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
+    <div class="container">
+      <a class="navbar-brand" href="/">M.STRE.SH</a>
+      <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+        Menu
+        <i class="fas fa-bars"></i>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarResponsive">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="/index.html">Blog</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/about.html">About</a>
+          </li>
+          <!-- <li class="nav-item">
+            <a class="nav-link" href="contact.html">Contact</a>
+          </li> -->
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Page Header -->
+  <header class="masthead" style="background-image: url('/img/opt-comm-blog-post/NUS-001_chip2.jpg')">
+    <div class="overlay"></div>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 col-md-10 mx-auto">
+          <div class="post-heading">
+            <h1>An introduction to coherent optical communication</h1>
+            <h2 class="subheading">From the very basics of "what is an optical fiber?" to modern transmission systems</h2>
+            <h2 class="subheading">Part 2: What is a fiber?</h2>
+            <span class="meta">Nov 14, 2020</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Post Content -->
+  <article>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 col-md-10 mx-auto">
+          <p>Things I hope you learn from this post series:</p>
+          <ul>
+            <li><a href='/blog/introduction-to-coherent-optical-communication-part-1.html'>Part 1: Why do we use fiber optic cables?</a></li>
+            <li>Part 2 (you are here): What is a fiber?</li>
+            <li><a href='/blog/introduction-to-coherent-optical-communication-part-3.html'>Part 3: The very basics of optical communication, but also some super advanced stuff</a></li>
+          </ul>
+
+          <p>This part of the post series will actually touch more on the question of "why is a fiber?" than "what is a fiber?" I will show a cross-section of a fiber-optic cable down below, but to understand the <i>why</i> of how it looks is, I think, more important. If you just want a pretty picture of a cross-section, skip ahead.</p>
+
+          <p>To begin, recall total internal reflection (possibly from high school physics? Though, I know shining light down a water stream is a common elementary school science demo). The gist of total internal reflection is that light will either be reflected or transmitted at the interface between two materials, depending on the wavelength, angle of incidence, and relative refractive indices of the two materials:</p>
+
+          <img src='/img/opt-comm-blog-post/tir.png' class="mx-auto d-block" style="width: 75%;">
+          <figcaption style="font-size: small;"><a href="https://www.timbercon.com/resources/glossary/total-internal-reflection/">www.timbercon.com</a> (for a lot of these images, I just did a Google Image search for some pretty pictures. I can't vouch for every website from which I borrowed an image.)</figcaption>
+
+          <p>If we can create a "tube" or "fiber" of high-refractive-index material surrounded by low-refractive-index material, we can use total internal reflection to keep light inside of this "optical fiber." (Representing light propagating in fibers as "rays" is a simplification, but we'll stick with it for now)</p>
+
+          <img src='/img/opt-comm-blog-post/tir-tube.png' class="mx-auto d-block" style="width: 50%;">
+          <figcaption style="font-size: small;"><a href="https://www.fomsn.com/optical-fibers-and-cables/grace/what-is-fiber-optic-cable-and-how-does-it-work/attachment/fiber-optics-total-internal-reflection/">www.fomsn.com</a> (again, no promises on fomsn.com... I just didn't want to redraw everything)</figcaption>
+
+          <p>A cross-section of a fiber will show a central core (the high-refractive-index part where light is guided), a low-refractive-index cladding, and layers of strengthening material around the cladding.</p>
+
+          <img src='/img/opt-comm-blog-post/fiber-xsection.png' class="mx-auto d-block" style="width: 75%;">
+          <figcaption style="font-size: small;"><a href="https://www.thorlabs.com/newgrouppage9.cfm?objectgroup_id=10759">www.thorslabs.com</a> (actually, Thor Labs is a legit company. Pretty much any optics student worldwide will have purchased something from them at some point. I vouch for them. Plus:  <a href="https://www.reddit.com/r/Physics/comments/p5c71/the_best_thing_about_working_in_an_optics_lab/">lab snacks!</a>).</figcaption>
+
+          <p>The coating, "strength member," and outer jacket are purely to protect the inner core and cladding from environmental factors, primarily <a href="https://www.thefoa.org/tech/ref/restoration/rest.html">backhoes</a>. All of the optical magic happens in the core, interface between the core and cladding, and the cladding just surrounding the core. For reference, a typical <a href="https://hypertextbook.com/facts/1999/BrianLey.shtml">human hair</a> is around 50 µm in diameter.</p>
+
+          <p>There are many different kinds of fiber optic cables. For now, we will lump them into two categories: "multi-mode" fiber (MMF) and "single-mode" fiber (SMF). Multi-mode fiber has larger cores.  You can see that with a large core, there are many possible paths for the ray of light to take as it propagates through this fiber. Each of those "paths" that the light can take is called an "optical mode" by physicists. (Again, simplification, but it works for now). As the core of the fiber gets narrower and narrower, eventually there is only one possible path the light can take: a single "mode."</p>
+
+          <img src='/img/opt-comm-blog-post/smf-vs-mmf.png' class="mx-auto d-block" style="width: 75%;">
+          <figcaption style="font-size: small;"><a href="https://community.fs.com/blog/single-mode-cabling-cost-vs-multimode-cabling-cost.html">www.community.fs.com</a></figcaption>
+
+          <p>There are a few reasons why we might use MMF in one application and SMF in another. For one, you can imagine that it is a lot easier to get light into the core of an MMF fiber than an SMF. But, all of those modes in a multi-mode fiber cause a crucial problem. Looking at the picture of all those rays propagating in the core of MMF, you can trace out that some will be longer than others. Depending on how you shine the light into your fiber (and other qualities of the input light that we won't go into here), you will receive your signal after different amounts of delay.</p>
+
+          <img src='/img/opt-comm-blog-post/mmf.png' class="mx-auto d-block" style="width: 75%;">
+          <figcaption style="font-size: small;"><a href="http://www.pacificcable.com/Fiber-Optic-Tutorial.html">www.pacificcable.com</a></figcaption>
+
+          <p>The phenomenom where your input signal could come out the other end of your MMF cable over disperse periods of time is called <a href="https://en.wikipedia.org/wiki/Modal_dispersion">modal dispersion</a>. This limits the maximum switching speed times cable length product that the fiber is good for. Since the variable time it takes to transit your cable depends on length, a long cable will cause a large amount of variability. In order to receive your signal successfully, you have to switch at a slow enough speed so that you can be sure to account for any variation in how long the different paths take to transit the cable. Similarly, if the cable length is very short, you can switch your light source on and off very quickly because the variable delay isn't an issue.</p>
+
+          <img src='/img/opt-comm-blog-post/mmf-bw.png' class="mx-auto d-block" style="width: 75%;">
+          <figcaption style="font-size: small;">Joseph C. Palais, “Fiber Optic Communication, Prentice Hall, 1998</figcaption>
+
+          <p>Over the years, various advancements in multi-mode fiber, transmitters, and receivers, have pushed the limits of what can be achieved. Modern <a href="https://web.archive.org/web/20140422141312/http://www.fols.org/fols_library/white_papers/documents/OFSOM4TheNextGenerationofMultimodeFiber.pdf">OM4 fiber</a> can transmit data at 100 Gbps over 150 meters, which is good enough for applications inside many data centers. However, for anything requiring longer reaches SMF is the way to go. Many large data centers will use SMF where reaches of up to 1 or 2 km is needed, and future re-use of the fiber plant infrastructure is a bonus. Returning to the network architecture figure I borrowed from a paper in part 1, most of the connections in the picture are made with SMF cables.</p>
+          
+          <img src='/img/opt-comm-blog-post/network-arch-mmf.png' class="mx-auto d-block" style="width: 100%;">
+          <figcaption style="font-size: small;">Rafique, Danish, and Luis Velasco. "Machine learning for network automation: Overview, architecture, and applications [invited tutorial]." Journal of Optical Communications and Networking 10.10 (2018): D126-D143.</figcaption>
+
+          <p>In the next part of this series, we'll discuss how to actually generate these optical signals propagating in optical fibers.</p>
+          <p><a href="/blog/introduction-to-coherent-optical-communication-part-3.html">On to part 3: the very basics of optical communication but also some super advanced stuff!</a></p>
+
+        </div>
+      </div>
+    </div>
+  </article>
+
+  <hr>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 col-md-10 mx-auto">
+          <ul class="list-inline text-center">
+            <li class="list-inline-item">
+              <a href="https://scholar.google.com/citations?user=9Tc8kSsAAAAJ&hl=en">
+                <span class="fa-stack fa-lg">
+                  <i class="fas fa-circle fa-stack-2x"></i>
+                  <i class="fas fa-graduation-cap fa-stack-1x fa-inverse" ></i>
+                </span>
+              </a>
+            </li>
+            <li class="list-inline-item">
+              <a href="https://www.linkedin.com/in/matthewstreshinsky/">
+                <span class="fa-stack fa-lg">
+                  <i class="fas fa-circle fa-stack-2x"></i>
+                  <i class="fab fa-linkedin-in fa-stack-1x fa-inverse"></i>
+                </span>
+              </a>
+            </li>
+            <li class="list-inline-item">
+              <a href="https://www.instagram.com/mstresh/">
+                <span class="fa-stack fa-lg">
+                  <i class="fas fa-circle fa-stack-2x"></i>
+                  <i class="fab fa-instagram fa-stack-1x fa-inverse"></i>
+                </span>
+              </a>
+            </li>
+          </ul>
+          <p class="copyright text-muted">&copy; Matt Streshinsky 2020</p>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Bootstrap core JavaScript -->
+  <script src="/vendor/jquery/jquery.min.js"></script>
+  <script src="/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+  <!-- Custom scripts for this template -->
+  <script src="/js/clean-blog.min.js"></script>
+
+</body>
+
+</html>

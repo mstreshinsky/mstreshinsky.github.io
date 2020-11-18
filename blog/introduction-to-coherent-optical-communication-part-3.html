@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <script async defer data-website-id="bad1567f-ffde-4b0e-adec-3232b5028e98" src="https://analytics.chemecse.io/umami.js"></script>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <title>An Introduction to Coherent Optical Communication</title>
+
+  <!-- Bootstrap core CSS -->
+  <link href="/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Custom fonts for this template -->
+  <link href="/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+  <link href='https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+
+  <!-- Custom styles for this template -->
+  <link href="/css/clean-blog.min.css" rel="stylesheet">
+
+</head>
+
+<body>
+
+  <!-- Navigation -->
+  <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
+    <div class="container">
+      <a class="navbar-brand" href="/">M.STRE.SH</a>
+      <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+        Menu
+        <i class="fas fa-bars"></i>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarResponsive">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="/index.html">Blog</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/about.html">About</a>
+          </li>
+          <!-- <li class="nav-item">
+            <a class="nav-link" href="contact.html">Contact</a>
+          </li> -->
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Page Header -->
+  <header class="masthead" style="background-image: url('/img/opt-comm-blog-post/NUS-001_chip2.jpg')">
+    <div class="overlay"></div>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 col-md-10 mx-auto">
+          <div class="post-heading">
+            <h1>An introduction to coherent optical communication</h1>
+            <h2 class="subheading">From the very basics of "what is an optical fiber?" to modern transmission systems</h2>
+            <h2 class="subheading">Part 3: The very basics of optical communication, but also some super advanced stuff</h2>
+            <span class="meta">Nov 16, 2020</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Post Content -->
+  <article>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 col-md-10 mx-auto">
+          <p>Things I hope you learn from this post series:</p>
+          <ul>
+            <li><a href='/blog/introduction-to-coherent-optical-communication-with-silicon-photonics-part-1.html'>Part 1: Why do we use fiber optic cables?</a></li>
+            <li><a href='/blog/introduction-to-coherent-optical-communication-with-silicon-photonics-part-2.html'>Part 2: What is a fiber?</a></li>
+            <li>Part 3 (you are here): The very basics of optical communication, but also some super advanced stuff</li>
+          </ul>
+
+          <p>Now that you understand the basics of fiber optics, let's learn how to actually transmit information through a fiber optic cable. This part of the series will focus on the transmitting side of an optical communication system. We'll start small (clicking on and off a flashlight really-really-fast), and end with the state-of-the-art in optical communication (a mouthful: probabilistically-shaped quadrature amplitude modulation)</p>
+          
+          <p>An abstract optical link starts with some electronic circuit (such as in the network interface card in a server) and some sort of electrical connection from that circuit to an electrical-to-optical (electrooptic) converter. This converter takes the electrical signal on one side and imparts that information onto light on the other side. Often, this is called "modulation" since some property of the light, such as its intensity, is modulated (light-on == "1" / light-off == "0"). The modulated optical signal then propagates down an optical fiber to an optical-to-electrical converter which is then connected to some sort of electronic circuit on the other side.</p>
+
+          <img src='/img/opt-comm-blog-post/basic-link.png' class="mx-auto d-block" style="width: 100%;">
+
+          <p>There are a lot of ways to use an electrical signal to modulate an optical signal. The simplest you might imagine looks like a light switch. The single-mode-fiber analogue to that is directly turning on and off a laser, which are typically single-mode devices. This is called a "directly modulated laser" or DML:</p>
+          
+          <img src='/img/opt-comm-blog-post/dml.png' class="mx-auto d-block" style="width: 50%;">
+
+          <p>Alternatively, you could shine light through a material that absorbs light, and whose absorption properties can be electrically controlled. This is called an "externally modulated laser" or EML:</p>
+
+          <img src='/img/opt-comm-blog-post/eml.png' class="mx-auto d-block" style="width: 50%;">
+
+          <p>Another method to create modulation is with an optical interferometer. (This may or may not have been in your high school or college physics class. I'll give a brief review in a second). The most common type of interferometer used for modulation is the <a href="https://en.wikipedia.org/wiki/Mach%E2%80%93Zehnder_interferometer">Mach-Zehnder modulator</a> or MZM.</p>
+
+          <img src='/img/opt-comm-blog-post/mzm.png' class="mx-auto d-block" style="width: 50%;">
+
+          <p>Recall (or learn for the first time right now), that light has both an amplitude and a phase. When we say that two optical beams are "in-phase" we mean that there is no difference in their relative phases. Similarly, every other relative phase difference is described as "out-of-phase." If a laser is split and then re-combined with both of the split beams being in-phase, the original laser beam can be recovered as if it were never split. Sometimes we call this "constructive interference." If instead, the two split beams of light are are combined while completely-out-of-phase, there will be no light at the output of the combiner--"destructive interference."</p>
+
+          <img src='/img/opt-comm-blog-post/phase.png' class="mx-auto d-block" style="width: 50%;">
+
+          <p>Using this concept of constructive and destrutive interference, we can create a device that modulates the light output if we are able to modulate the relative phase of the light in the two paths. One of the most common interferometers is the Mach-Zehnder interferometer (MZI), shown below. There exist materials and devices that change their optical properties through an electrical stimulus, and we can use these inside of an MZI. As the phase in one of the paths is changed from 0° to 360°, the intensity of light at the detector changes in a sinusoidal pattern, with a null point where the two beams in the two paths are out of phase, and the peak where they are in-phase. The "quadrature" point is a fancy way of saying the phase is set to halfway between out-of-phase and in-phase where the intensity of light detected is half of what it is at the peak.</p>
+
+          <img src='/img/opt-comm-blog-post/mzm-detail.png' class="mx-auto d-block" style="width: 100%;">
+          <figcaption style="font-size: small;"><a href="https://www.researchgate.net/figure/Schematic-representation-of-the-Mach-Zehnder-interferometer-Two-incoming-modes-are_fig1_322963552">Kajtoch, Dariusz. (2015). "Novel schemes for generation of strongly squeezed atomic states</a>." Somehow, this student's M.S. thesis is the top hit on Google images for MZM. I looked Dr. Kajtoch up, he finished a PHD in quantum physics and is in the machine learning space now.</figcaption>
+
+          <p>If we were to adjust that phase change in time around the quadrature point, we will see modulated light at the output of the Mach-Zehnder inteferometer. By changing, or modulating, the electrical input in in this way, we have created an optical modulator</p>
+
+          <img src='/img/opt-comm-blog-post/mzm-transfer-function.png' class="mx-auto d-block" style="width: 75%;">
+          <figcaption style="font-size: small;"><a href="https://www.researchgate.net/figure/Mach-Zehnder-interferometer-frequency-transfer-function_fig7_224830793">Vysniauskas, Juozas & Vasiliauskas, Tomas & Sermuksnis, Emilis & Palenskis, Vilius & Matukas, Jonas. (2012). "Investigation of High-Speed Transient Processes and Parameter Extraction of InGaAsP Laser Diodes."</a> Somehow, this paper is the top hit on Google images for MZM transfer function. Dr. Palenskis is now a professor at Vilnius University in Lithuania.</figcaption>
+
+          <p>One common material used to make Mach-Zehnder modulators is <a href="https://en.wikipedia.org/wiki/Lithium_niobate">lithium niobate, or LiNbO<sub>3</sub></a>. Real lithium niobate modulators look surprisingly close to the below cartoon of one. Depending on the orientation of the lithium niobate crystal, the refractive index of the device will change in the presence of an electrical voltage.</p>
+
+          <img src='/img/opt-comm-blog-post/mzm-drawing.png' class="mx-auto d-block" style="width: 75%;">
+          <figcaption style="font-size: small;"><a href="https://www.researchgate.net/figure/a-Integrated-electro-optic-modulation-using-waveguide-Mach-Zehnder-Interferometer-MZI_fig8_319138362">Dingel, Benjamin & Madamopoulos, Nicholas & Prescod, Andru. (2017). "Adaptive High Linearity Intensity Modulator for Advanced Microwave Photonic Links."</a> This is yet another one of those top hits on Google images things... Dr. Dingel looks to have gone on to found Nasfine Photonics, LLC and won some SBIR contracts.</figcaption>
+          
+          <p>Now we can take this MZM, and drive a binary voltage signal into the input and at the output see a binary optical signal. I included a sinusoidal picture beneath the square wave optical output to remind you that light has both an amplitude and a phase, because we will be using that concept in a second. The encoding scheme of using the presence of absence of light to represent our "1"s and "0"s is often referred to as "on-off-keying," because we have "keyed" our information with a light that is either on or off. Sometimes you might see this referred to as "amplitude-shift-keying" (ASK), for similar reasons.</p>
+
+          <img src='/img/opt-comm-blog-post/ook.png' class="mx-auto d-block" style="width: 75%;">
+
+          <p>We can get fancier, though. We don't have to settle for a binary input and output signal. Since the MZM is fundamentally analog, we can input a multi-level input signal and detect a multi-level output signal. As long as we have a receiver that can distinguish between the different levels, we can transmit twice (or more) as much information per transition as before. In this case, we start referring to the received signal as "symbols" rather than "bits," since the data is more than just binary per transition. This type of multilevel modulation is sometimes referred to as "pulse amplitude modulation" (PAM), or still as ASK. This example with 4 levels is sometimes referred to as PAM-4 or 4-ASK. The difference between ASK and PAM when we are talking about optical signals is not that important.</p>
+
+          <img src='/img/opt-comm-blog-post/pam.png' class="mx-auto d-block" style="width: 75%;">
+
+          <p>Well, there's more to light than just its amplitude, remember? Light also has a phase, and we have a method of changing its phase. If we had a reference laser to compare against, we could say that light that is in-phase with that reference is a digital "1" and light that is out of phase with that reference is a digital "0". This is the so-called "coherent" part of the title of this blog post series. We use "coherent" in this context to describe an optical signal that can be repeatably interfered with a reference beam beacuse it has some deterministic phase. Incoherent light has random phase properties, making things like interference impossible.</p>
+
+          <img src='/img/opt-comm-blog-post/coherent-light.png' class="mx-auto d-block" style="width: 50%;">
+
+          <p>We can detect this relative phase information by using an interferometer. Instead of taking light and splitting it, we can instead skip the splitting step and directly try to combine it with a reference beam of light</p>
+
+          <img src='/img/opt-comm-blog-post/coherent-detector.png' class="mx-auto d-block" style="width: 75%;">
+
+          <p>Coming back to that lithium niobate modulator, we can see we already have an electrooptic mechanism to change optical phase. In this case, the phase change is directly related to the voltage</p>
+
+          <img src='/img/opt-comm-blog-post/phase-mod.png' class="mx-auto d-block" style="width: 75%;">
+
+          <p>And just as before, we can apply a binary voltage input to our phase modulator and see a binary change in the output phase. We can interfere that optical signal with a reference signal and create "1"s and "0"s where our optical signal and the reference signal constructively or destructively interfere with one another. This is now phase-shift-keying because the information is keyed on the optical phase, as opposed to encoding information in the optical amplitude in amplitude-shift-keying.</p>
+
+          <img src='/img/opt-comm-blog-post/psk.png' class="mx-auto d-block" style="width: 75%;">
+
+          <p>And just as before, we can apply multilevel voltage inputs to our phase modulator to create multilevel phase outputs. Similar to 4-ASK, we can create a 4-PSK signal.</p>
+
+          <img src='/img/opt-comm-blog-post/4-psk.png' class="mx-auto d-block" style="width: 75%;">
+
+          <p>Keeping track of the phase visually for display on pages like this can be challenging. It can be helpful to draw a circle and point to locations on the circle as the relative phase. In the case where there are two possible phases, 180° apart from one another, we draw two points on opposite sides of a circle:</p>
+
+          <img src='/img/opt-comm-blog-post/visualizing-2-psk.png' class="mx-auto d-block" style="width: 75%;">
+
+          <p>And for 4-PSK where there are 4 possible phases, each 90° apart from one another, we draw 4 points on the circle:</p>
+
+          <img src='/img/opt-comm-blog-post/visualizing-4-psk.png' class="mx-auto d-block" style="width: 75%;">
+
+          <p>This is where that two-dimensional visualization of phase is useful: we can encode information on both the amplitude of light and the phase of light at the same time! If the light is brighter, we draw a bigger circle. If the light is dimmer, and 180° out of phase, we draw a point 180° away closer to the center of the graph. This type of modulation is called "quadrature amplitude modulation" (QAM). The case where we have 4 amplitude levels and 4 phase levels is called 16-QAM, because there are 16 possible received optical states.</p>
+
+          <img src='/img/opt-comm-blog-post/16-qam.png' class="mx-auto d-block" style="width: 50%;">
+
+          <p>We don't have to stop at 16-QAM, if our receiver is capable-enough, we can continue to add amplitude and phase levels until the points start to blur together.</p>
+
+          <img src='/img/opt-comm-blog-post/64-qam.png' class="mx-auto d-block" style="width: 75%;">
+
+          <p>The concept of "until the points start to blur together" is important. Nothing in life is perfect (except, perhaps, April 25th), and so there will always be "noise" on our signal going into the receiver. We can never drive the amplitudes and phases exactly right, and the electronics themselves create random fluctuations in our signals. You could imagine that for 64-QAM, if all the points are too fuzzy, you couldn't tell one point from another. The amount of "signal" we have compared to the amount of fuzziness, or "noise" is often expressed as a signal-to-noise ratio (SNR). Claude Shannon famously described an upper limit to how much information could theoretically be transmitted in a link given some (SNR) of the received signal. Coherent communication gets us pretty close to that theoretical limit--within a factor of 5 or so demonstrated in 2010.</p>
+
+          <img src='/img/opt-comm-blog-post/shannon-limit.png' class="mx-auto d-block" style="width: 100%;">
+          <figcaption style="font-size: small;">Yan, L-S., X. Liu, and W. Shieh. "Toward the Shannon limit of spectral efficiency." IEEE Photonics Journal 3.2 (2011): 325-330</figcaption>
+
+          <p>Nine years later, in 2019, and we can get pretty darn close with even fancier modulation schemes. These schemes still encode information in the amplitude and phase of light, but they both distribute the points differently and use each point with different probabilities. They are "probabilistically-shaped" in that the points closer to zero are used more often than the points farther away. With these types of techniques, we can get to within a factor of 2 away from the theoretical limit of spectral efficiency</p>
+        
+          <img src='/img/opt-comm-blog-post/probabilistically-shaped.png' class="mx-auto d-block" style="width: 75%;">
+
+          <p>Looking back at the last 150 years of long-distance communication and 40 years of optical communication, and the scaling factor is astounding. A variety of fundamental breakthroughs over the years has enabled a roughly yearly doubling in the capacity of our communications systems (expressed in those now-familiar-to-you terms of switching speed times distance product).</p>
+
+          <img src='/img/opt-comm-blog-post/comm-scaling.png' class="mx-auto d-block" style="width: 100%;">
+          <figcaption style="font-size: small;">(left) G. P. Agrawal, Fiber-Optic Communication Systems. John Wiley & Sons, Inc., Oct. 2010. <br>(right) H. Kogelnik, “High-capacity optical communications: personal recollections,” IEEE Journal of Selected Topics in Quantum Electronics, vol. 6, no. 6, pp. 1279–1286, Nov. 2000 </figcaption>
+
+          <p>And what is actually deployed has kept close pace with research. The first systems deployed into the internet that you know often follow the first research demonstration within about 4 years. The modulation formats we just talked about are very likely carrying these text characters to your computer. 4-PSK (also known as QPSK) at 100 Gbps was first deployed in 2010, with 16-QAM systems operating at 200 Gbps being deployed shortly thereafter in 2013. In 2020, there are published results in excess of 1 Tbps on a single color, and more than 100 Tbps total in a single fiber.</p>
+
+          <img src='/img/opt-comm-blog-post/transmission-capacity-research.png' class="mx-auto d-block" style="width: 100%;">
+          <figcaption style="font-size: small;">P. Winzer, D. T. Neilson, and A. R. Chraplyvy, "Fiber-optic Networking Transmission and Networking: The Previous 20 and the Next 20 years", Opt. Exp. 26(18), 2018</figcaption>
+
+          <p>What about the fiber coming to your dream house? Why can't you get a 1 Tbps connection? It's coming, but at a different rate. The data rate of those access networks has been scaling at between 30% and 50% per year. Those connections don't use these advanced modulation formats we just discussed. They're optimized for cost at a lower data rate.</p>
+
+          <img src='/img/opt-comm-blog-post/access-scaling.png' class="mx-auto d-block" style="width: 75%;">
+          <figcaption style="font-size: small;">P. Vetter, “The future of broadband access,” in The Future X Network. Boca Raton, FL, USA: CRC Press, 2016.<br>J. Nielsen, “Nielsen’s Law of Internet Bandwidth,” Apr. 5, 1998. [On- line]. Available: https://www.nngroup.com/articles/law-of-bandwidth/</figcaption>
+
+        </div>
+      </div>
+    </div>
+  </article>
+
+  <hr>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 col-md-10 mx-auto">
+          <ul class="list-inline text-center">
+            <li class="list-inline-item">
+              <a href="https://scholar.google.com/citations?user=9Tc8kSsAAAAJ&hl=en">
+                <span class="fa-stack fa-lg">
+                  <i class="fas fa-circle fa-stack-2x"></i>
+                  <i class="fas fa-graduation-cap fa-stack-1x fa-inverse" ></i>
+                </span>
+              </a>
+            </li>
+            <li class="list-inline-item">
+              <a href="https://www.linkedin.com/in/matthewstreshinsky/">
+                <span class="fa-stack fa-lg">
+                  <i class="fas fa-circle fa-stack-2x"></i>
+                  <i class="fab fa-linkedin-in fa-stack-1x fa-inverse"></i>
+                </span>
+              </a>
+            </li>
+            <li class="list-inline-item">
+              <a href="https://www.instagram.com/mstresh/">
+                <span class="fa-stack fa-lg">
+                  <i class="fas fa-circle fa-stack-2x"></i>
+                  <i class="fab fa-instagram fa-stack-1x fa-inverse"></i>
+                </span>
+              </a>
+            </li>
+          </ul>
+          <p class="copyright text-muted">&copy; Matt Streshinsky 2020</p>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Bootstrap core JavaScript -->
+  <script src="/vendor/jquery/jquery.min.js"></script>
+  <script src="/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+  <!-- Custom scripts for this template -->
+  <script src="/js/clean-blog.min.js"></script>
+
+</body>
+
+</html>

@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <script async defer data-website-id="bad1567f-ffde-4b0e-adec-3232b5028e98" src="https://analytics.chemecse.io/umami.js"></script>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <title>An Introduction to Coherent Optical Communication</title>
+
+  <!-- Bootstrap core CSS -->
+  <link href="/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Custom fonts for this template -->
+  <link href="/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+  <link href='https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+
+  <!-- Custom styles for this template -->
+  <link href="/css/clean-blog.min.css" rel="stylesheet">
+
+</head>
+
+<body>
+
+  <!-- Navigation -->
+  <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
+    <div class="container">
+      <a class="navbar-brand" href="/index.html">M.STRE.SH</a>
+      <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+        Menu
+        <i class="fas fa-bars"></i>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarResponsive">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="/index.html">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/about.html">About</a>
+          </li>
+          <!-- <li class="nav-item">
+            <a class="nav-link" href="contact.html">Contact</a>
+          </li> -->
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Page Header -->
+  <header class="masthead" style="background-image: url('/img/opt-comm-blog-post/NUS-001_chip2.jpg')">
+    <div class="overlay"></div>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 col-md-10 mx-auto">
+          <div class="post-heading">
+            <h1>An introduction to coherent optical communication</h1>
+            <h2 class="subheading">From the very basics of "what is an optical fiber?" to modern transmission systems</h2>
+            <h2 class="subheading">Part 1: Why do we use fiber optic cables?</h2>
+            <span class="meta">Nov 14, 2020</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Post Content -->
+  <article>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 col-md-10 mx-auto">
+          <p>Things I hope you learn from this post series:</p>
+          <ul>
+            <li>Part 1 (you are here): Why do we use fiber optic cables?</li>
+            <li><a href="/blog/introduction-to-coherent-optical-communication-part-2.html">Part 2: What is a fiber?</a></li>
+            <li><a href="/blog/introduction-to-coherent-optical-communication-part-3.html">Part 3: The very basics of optical communication, but also some super advanced stuff</a></li>
+          </ul>
+
+          <img src='/img/opt-comm-blog-post/opt-comm-phy-domain.png' class="mx-auto d-block" style="width: 75%;">
+
+          <p>This will be about how the physical ones and zeroes get from point A to point B in a fiber optic cable. Expressed in terms of the <a href="https://en.wikipedia.org/wiki/OSI_model">OSI model</a>, this is usually lumped in with the PHY, or even below the PHY depending on who you are talking to. I don't have a clue about how the networking systems themselves work. The PHY is at a higher level than what I personally understand.</p>
+
+          <img src='/img/opt-comm-blog-post/phy.png' class="mx-auto d-block" style="width: 75%;">
+          <figcaption style="font-size: small;">Figure source: <a href='https://www.cloudflare.com/learning/ddos/glossary/open-systems-interconnection-model-osi/'>Cloudflare</a></figcaption>
+
+          <p>To give some context for what kind of fiber optic communication we will be talking about, here is a cartoon of a telecommunication network:</p> 
+
+          <img src='/img/opt-comm-blog-post/network-arch.png' class="mx-auto d-block" style="width: 100%;">
+          <figcaption style="font-size: small;">Rafique, Danish, and Luis Velasco. "Machine learning for network automation: Overview, architecture, and applications [invited tutorial]." Journal of Optical Communications and Networking 10.10 (2018): D126-D143.</figcaption>
+          <p>What you might be more familiar with is the fiber optic cable that would go to your home (or maybe just your dream home). The stuff connected to your home, a business, or a cell tower is usually lumped into the category of connections called <a href="https://en.wikipedia.org/wiki/Access_network">access networks</a>. From your home, a cable might go to a switch that connects to multiple homes, out of which there could be cables to another aggregation location, eventually all leading to some central office. This central office is itself connected to several other pieces of aggregation and networking infrastructure. This part of the network is the "edge" and eventually leads to an edge connection in a metro network.  While some of the topics covered in this post series will be useful for understanding the connections from your home to the network edge, the actual transmission systems described down below are mostly only used in the metro network and higher.</p>
+          <p>Fiber optic cables might connect Brooklyn to Manhattan to Newark, NJ. Maybe there is a small data center in Manhattan that is connected to this metro network (and in reality, there are so-called <a href='https://www.ciena.com/insights/what-is/What-is-DCI.html'>data center interconnects</a> connecting data centers within a metro network to one another directly). The fiber optic cables within the metro and core networks operate at anywhere from 100 gigabits per second (Gbps) to more than 10 terabits per second (Tbps). We'll start with why we might even use a fiber optic cable, and build up to how to transmit information at these tremendous aggregate data rates</p>
+
+          <h2 class="section-heading">Why do we use fiber optic cables?</h2>
+
+          <p>We use fiber optic cables instead of copper cables because they have superior bandwidth. What having "good bandwidth" means is a little bit nuanced, but it is sometimes synonymous with "faster." An oft-repeated but incorrect statement is that the fiber optic cable is faster because the signals travel at the speed of light instead of the speed at which electrical signals propagate down a fiber optic cable. In actuality, the speed of propagation of electrical signals in high-bandwidth copper cables is almost the exact same as the speed of light within a fiber optic cable.</p>
+
+          <p>Diving into bandwidth a bit more, imagine we have a short copper cable connecting two points. On one end of the cable we switch an electrical voltage from a high voltage (a binary "1") to a low voltage (a binary "0"). At the other end of the cable, the transition from "1" to "0" and vice versa will not be as quick as at the starting end of the cable:</p>
+
+          <img src="/img/opt-comm-blog-post/bw-short-cable.png" class="mx-auto d-block" style="width: 75%;">
+          <figcaption style="font-size: small;">Original figure source is from this application note: Texas Instruments, "LIN Protocol and Physical Layer Requirements," LLA383 February 2018. For convenience, I manipulated the drawings to make a totally different point than the source material</figcaption>
+
+          <p>As the electrical cable gets longer, the rise and fall time of the ones and zeros increases:</p>
+
+          <img src="/img/opt-comm-blog-post/bw-med-cable.png" class="mx-auto d-block" style="width: 75%;">
+
+          <p>And eventually, at a certain length the rise and fall times pretty much prevent us from recovering the original signal:</p>
+
+          <img src="/img/opt-comm-blog-post/bw-long-cable.png" class="mx-auto d-block" style="width: 75%;">
+
+          <p>With that last really long electrical cable, if we slow down the rate at which we switch (for the sake of argument, say we go from switching 1000 times per second to 500 times per second), we can start to see the original signal again:</p>
+
+          <img src="/img/opt-comm-blog-post/bw-slow-long-cable.png" class="mx-auto d-block" style="width: 75%;">
+
+          <p>The key thing to take away from the above is that a copper cable has some fundamental limit related to the data-rate times the cable length: The longer the cable, the slower you are forced to transmit data (switch from one to zero, and vice versa).</p>
+
+          <p>A natural question you may have is "why do the rise and fall times depend on the length of the cable?" An answer that only touches on the subject is that an oscillating voltage signal is attenuated as it propagates along the length of the cable. There is some neat <a href="https://www.microwaves101.com/encyclopedias/transmission-line-loss">physics</a> involved that I won't go into further here.</p>
+
+          <p>A fiber optic cable does not, in general, have this same limit. (This is mostly true, but I won't go into the ways it isn't in this post).  If we start with a relatively short cable, and instead of switching an electrical voltage, we turn a light source on and off to represent our ones and zeros:</p>
+
+          <img src="/img/opt-comm-blog-post/bw-short-fiber.png" class="mx-auto d-block" style="width: 75%;">
+
+          <p>... and increase the length:</p>
+
+          <img src="/img/opt-comm-blog-post/bw-med-fiber.png" class="mx-auto d-block" style="width: 75%;">
+
+          <p>... and increase the length by a lot:</p>
+
+          <img src="/img/opt-comm-blog-post/bw-long-fiber.png" class="mx-auto d-block" style="width: 75%;">
+
+          <p>You can see that the rise and fall time at the end of the fiber are the same as what they were at the transmitting end. (Again, this is only mostly true, but the reasons it isn't aren't important now). The optical fiber isn't perfectly transparent, so the light is diminished in intensity as the cable gets longer, but the rise and fall times aren't affected.</p>
+
+          <p>The other oft-repeated and correct reason we use fiber optic cables is because they can support multiple colors, with each color carrying its own data signal. Pink Floyd helps us with the visualization:</p>
+
+          <img src="/img/opt-comm-blog-post/wdm-dark-side-of-the-moon.png" class="mx-auto d-block" style="width: 75%;">
+
+          <p>The science of how many colors a fiber optic cable can carry is, you guessed it, also nuanced. In practice, the upper limit for today's transmission systems is close to 100 colors per fiber, with the actual number varying depending on the data rate, transmission format, and a variety of network parameters.</p>
+
+          <p>Most telecommunications systems operate in the telecom C-band, at wavelengths of roughly 1525nm to 1565nm. As a reminder, the <a href="https://en.wikipedia.org/wiki/Visible_spectrum">visible spectrum</a> is roughly 380nm to 750nm. There are two primary reasons for using the optical C-band for long-distance communication. The first is that a typical optical fiber is the most transparent in this wavelength range. Being more transparent means you can transmit more data farther before your light is too diminished in intensity to recover. This plot of loss (smaller numbers means the fiber is more transparent) versus wavelength was the state of the art in 1979 (and since then, some of those peaks have been pushed down close to the fundamental limit):</p>
+
+          <img src="/img/opt-comm-blog-post/fiber-loss.png" class="mx-auto d-block" style="width: 75%;">
+          <figcaption style="font-size: small;">T. Miya, Y. Terunuma, T. Hosaka, and T. Miyoshita, Electron. Lett. 15, 106 (1979). </figcaption>
+
+          <p>The other, and presently in 2020, more important reason we primarily use this wavelength range is due to the physics and availability of optical amplifiers, most commonly an <a href="https://en.wikipedia.org/wiki/Optical_amplifier#Erbium-doped_optical_fiber_amplifiers">erbium-doped fiber amplifier</a>. An optical amplifier is a device in which you can input your optical signal and get a brighter version of it out the other side (plus a little bit of noise because nothing is perfect). The amplifiers let us transmit signals over tremendous distances without using repeaters to receive the optical signal, convert it into an electrical signal, and regenrate a new optical signal. Part 3 of this post series will go into the historical scaling trends in a bit more detail.</p>
+
+          <h2>Summary: Why do we use optical fibers instead of copper cables?</h2>
+
+          <p><u>Optical fibers are "faster" than electrical cables in terms of transmission capability: more bits per second per distance.</u></p>
+
+          <p>In <a href="/blog/introduction-to-coherent-optical-communication-part-2.html">Part 2: What is a fiber?</a> I will tell you what a fiber is and so much more!</p>
+
+
+        </div>
+      </div>
+    </div>
+  </article>
+
+  <hr>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 col-md-10 mx-auto">
+          <ul class="list-inline text-center">
+            <li class="list-inline-item">
+              <a href="https://scholar.google.com/citations?user=9Tc8kSsAAAAJ&hl=en">
+                <span class="fa-stack fa-lg">
+                  <i class="fas fa-circle fa-stack-2x"></i>
+                  <i class="fas fa-graduation-cap fa-stack-1x fa-inverse" ></i>
+                </span>
+              </a>
+            </li>
+            <li class="list-inline-item">
+              <a href="https://www.linkedin.com/in/matthewstreshinsky/">
+                <span class="fa-stack fa-lg">
+                  <i class="fas fa-circle fa-stack-2x"></i>
+                  <i class="fab fa-linkedin-in fa-stack-1x fa-inverse"></i>
+                </span>
+              </a>
+            </li>
+            <li class="list-inline-item">
+              <a href="https://www.instagram.com/mstresh/">
+                <span class="fa-stack fa-lg">
+                  <i class="fas fa-circle fa-stack-2x"></i>
+                  <i class="fab fa-instagram fa-stack-1x fa-inverse"></i>
+                </span>
+              </a>
+            </li>
+          </ul>
+          <p class="copyright text-muted">&copy; Matt Streshinsky 2020</p>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Bootstrap core JavaScript -->
+  <script src="/vendor/jquery/jquery.min.js"></script>
+  <script src="/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+  <!-- Custom scripts for this template -->
+  <script src="/js/clean-blog.min.js"></script>
+
+</body>
+
+</html>
