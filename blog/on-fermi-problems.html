@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <script async defer data-website-id="bad1567f-ffde-4b0e-adec-3232b5028e98" src="https://analytics.chemecse.io/umami.js"></script>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <title>On average, how many Fermi problems get asked in interviews each month?</title>
+
+  <!-- Bootstrap core CSS -->
+  <link href="/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Custom fonts for this template -->
+  <link href="/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+  <link href='https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+
+  <!-- Custom styles for this template -->
+  <link href="/css/clean-blog.min.css" rel="stylesheet">
+
+</head>
+
+<body>
+
+  <!-- Navigation -->
+  <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
+    <div class="container">
+      <a class="navbar-brand" href="/">M.STRE.SH</a>
+      <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+        Menu
+        <i class="fas fa-bars"></i>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarResponsive">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="/">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/about.html">About</a>
+          </li>
+          <!-- <li class="nav-item">
+            <a class="nav-link" href="contact.html">Contact</a>
+          </li> -->
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Page Header -->
+  <header class="masthead" style="background-image: url('/img/NUS-001_chip2.jpg')">
+    <div class="overlay"></div>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 col-md-10 mx-auto">
+          <div class="post-heading">
+            <h1>On average, how many Fermi problems get asked in interviews each month?</h1>
+            <h2 class="subheading">How close to the real answer do you think you are? There's a point to all of this; just please bear with me.</h2>
+            <span class="meta">October 31, 2021</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Post Content -->
+  <article>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 col-md-10 mx-auto">
+
+          <p>In my particular field (integrated photonics and optical communication), I think there is immense value in being able to calculate order-of-magnitude estimations. Classic examples of these types of problems are "How many piano tuners are there in Chicago?" or "How many golf balls fit in a bus?" or "How many tons of TNT would create a nuclear blast of this size?"</p>
+
+          <p>There's <a href="https://news.ycombinator.com/item?id=3963920">an incredible</a> <a href="https://news.ycombinator.com/item?id=5916962">amount</a> <a href="https://news.ycombinator.com/item?id=26990602">of disdain</a> <a href="https://news.ycombinator.com/item?id=17960690">for these</a> <a href="https://iaap-journals.onlinelibrary.wiley.com/doi/abs/10.1111/apps.12163">types of problems</a>. It's not too hard to find the same sentiment crop up repeatedly whenever interviews are discussed on various online forums. I think it's reasonable that most engineering roles don't need to regularly run order-of-magnitude estimations routinely to sanity check their result or path-find new solutions. And, to be fair, I think brainteasers and "lateral thinking" problems in an interview setting are absolutely worthless. However, I do not believe that Fermi problems fall into these latter two categories. Moreover, I think the most valuable feedback from this type of problem comes from the follow-up question: how close to the real answer do you think you are?</p>
+
+          <h2 class="section-heading">Constructing a Fermi problem and motivations for asking them in the first place</h2>    
+
+          <p>Estimation--being able to take a set of known facts, create a set of assumptions, and arrive at an approximate answer--is a skill. At a fundamental level, asking a candidate to do this kind of problem is attempting to assess how good the candidate is at estimation. You should ask Fermi problems if being able to estimate values is an important skill for the people on the team.
+          </p>
+
+          <p>Here's a rough example of where estimation ability is important: Suppose you are designing a circuit on a chip and you have two design alternatives. One might be higher-yield but requires additional calibration during a factory test to meet the specs, while the other would be lower-yield but not need the extra calibration cost during production. Being able to first recognize that in order to make a decision you will need to start making assumptions and calculating a cost-benefit tradeoff is a start. You construct a series of arithmetic operations: you'll need to talk to the test engineers to figure out what this new procedure might cost, you'll want to talk to the firmware folks to know the difficulty of adding in new calibration data during development, you'll want to look into the fabrication process variation to see what sort of marginal-yield you might expect for your two designs, you'll want to talk to the product manager to understand the overall cost targets to see what might be in the noise of accounting error versus what might break the business case, and so on.</p>
+
+          <p>An argument against asking a Fermi problem is that the quantities being calculated are wholly unrelated to anything the company does. An alternative to basing the Fermi problem on calculating a piece of trivia might be try to formulate a more realistic problem the candidate might face in their day-to-day. I'm generally against specifically basing Fermi problems on things so closely tied to the real-world job. It's hard to separate someone's estimation ability from recent experience or from memorized facts. To be fair, part of the goal of the whole interview process is to assess how much in-field knowledge and experience the candidate has. You should separately figure out if a candidate has the specific experience for which you are hoping to hire. If there's too much overlap between the estimation problem and the candidate's experience, you end up with something that stops testing the candidates ability to estimate and starts testing how recently they saw this particular problem. You also muddy the comparison between different candidate's estimation abilities.</p>
+
+          <p>As a candidate goes through a Fermi problem, the point isn't about being able to get the exact answer, the point is to set up a plausible path that might get you a close-enough answer and then to figure out how close you might be and whether the answer makes sense. As in the above example, in the real world you will be able to gather a set of assumptions from outside sources, but it is up to you to figure out how to make the decision to begin with and then identify the assumptions and uncertainties. The test engineers probably haven't implemented the exact thing you want in this new design--so they give you a range of time it takes to implement. Is your estimated range reasonable? Maybe you go through the math and come up with an extra million dollars per chip of cost--clearly something went wrong in your calculation. But maybe you get to an answer of an extra thousand dollars per chip of cost--is this a reasonable answer to begin with? How do you know?</p>
+
+          <p>Constructing a fair Fermi problem is important. Giving the exact same Fermi problem to every candidate is unfair. The ideal problem should be based on something they have seen in their day-to-day life so that they can start from a reasonable set of assumptions and have a plausible path to constructing an estimation. If the candidate hasn't ever even seen a piano, nor been to Chicago, nor understands what or why you might tune a piano, probably asking them to calculate how many piano tuners are in Chicago is a bad question to ask. Keep it simple. I like transportation-based questions because they are generally safe--do they take the train to commute, or a bike, or drive? Asking how many bicycles/cars/subway cars are active at a given time on average could be a nice question. But, maybe the candidate lives at home and doesn't commute because they are a student taking classes online. Ask them to estimate how many total students are currently sitting in a zoom classroom at any given moment. Finally, for the sake of introducing uncertainty restrict the use of just looking up values online. Again, the point isn't to get to the right answer, the point is to get to a path that could get to a reasonable answer, tell whether an answer is reasonable, and identify assumptions where there is uncertainty and how this uncertainty affects the answer.</p>
+
+          <p>Finally, there are good reasons outside of assessing estimation competency for asking a Fermi problem. Can you work with them? How do they act when faced with a problem they've never considered before? Perhaps they have literally aced every single in-field question--where is their boundary of capabilities? These apply to asking most questions during an interview, but many come forth more frequently during a Fermi problem, in particular.</p>
+
+          <h2 class="section-heading">Assessing the results of a Fermi problem</h2>
+
+          <p>Being able to construct a set of arithmetic operations is the FizzBuzz part of the problem. For the most part, it really doesn't matter how complex of a solution the candidate comes up with. At some point, they might wave their arms around and tell you how they don't know if something is reasonable but they are going with it anyway. You should tell them "that's totally OK, let's keep going." Obviously, there has to be some threshold of complexity. The key to setting this threshold is in the candidates ability to identify and set up assumptions. I would not negatively judge anyone for solving the same problem in four steps where someone else set up an elaborate ten step process.</p>
+
+          
+          <p><a href="https://www.wired.com/2014/08/how-to-solve-crazy-open-ended-google-interview-questions/">I've seen arguments that the first part of the problem is testing "how candidates think" or what their thought process is</a>. I think that's a ridiculous idea. I have no idea how or whether a candidate who starts with a relatively simpler approach for this estimation exercise is any better than a candidate who uses a more complex formulation. They're probably in the middle of an hour-long interview session in the middle of many other hour-long interview sessions. If the candidate happens to not consider a few aspects about a problem, it's probably because they haven't spent a couple hours of quiet solitude over a few days thinking about it. For example, maybe they forget in the moment that highways can have 2-way traffic instead of 1-way. I refuse to believe any claim of weeding out "thought processes" in Fermi problems.</p>
+
+          <p>The crux of the Fermi problem is what comes next. I always ask, "How close to the real answer do you think you are? 10%? A factor of two? Within an order of magnitude?" This is where I see significant bifurcation in candidates' abilities to estimate. Too often, someone will reply too quickly and without much thought, "I'd say probably within X percent." To which, I will always reply, "how did you come up with X percent?" To which, I hear more often than I wish, "I think these different values I started with are all pretty close." To which, I silently and sadly move on to other topics. This is the part of the question to which I think there are a finite number of "right" answers.</p>
+
+          <p>The best answer, in my mind, is where a candidate looks back at the assumptions they made, realize they had to guesstimate values in each one, recognize some degree of error in each guesstimate, and multiply their errors together with the effect of making those errors. Perhaps they chose a number for the population of Chicago. Surely they don't remember the exact population of Chicago--but do they think that the number they came up with is correct to within some factor? What factor exactly? How does this new range of possibilities affect their final result? What about every other assumption they just made? If they needed that population for the final result by a simple multiplication--thinking it might be between one million and five million people now expands the range for their final estimation by a factor of five. It is depressingly rare for anyone to be able to look backwards at the things they just said out loud they have to guess for values, and not realize that their guesses are fundamentally imprecise. Because it is so rare, if you value estimation, consider hiring a candidate on the spot if they are able to do this.</p>
+          
+          <p>Another method that is decent and complementary to the above is to try to calculate the right answer with a completely different set of assumptions. Perhaps they estimated the number of cars on the road by starting with the physical dimensions of cars, spacing between them, and miles of highway. A stellar candidate could try to test the reasonable-ness of their final answer by instead starting with the population of the state, the fraction of people that own a car, the fraction of time each car owner spends driving., and see where they end up. While two wrongs assumptions in each approach can fool oneself into how right they are, it is a surefire way of figuring out what actually is reasonable.</p>
+
+          <p>Also consider that you are hiring someone and intend to spend a considerable number of hours working with them. Can they clearly communicate their methodology? Sometimes candidates and interviewers mistake "show your work" with "literally, speak out loud the stream of consciousness that is going through your head." It's fine if the candidate goes head-down for an hour with a pen-and-paper to answer your question--but at the end of it they should be able to turn around and tell you what they did and why. I like to ask questions during the explanation: if I can think of other cases they might have missed (what about traffic going the other direction for estimating the number of vehicles?), or where assumptions came from (where did your value for the population of the city of Chicago come from?). Do they get defensive or do they acknowledge that there might be flaws in their logic? It usually doesn't actually matter if they missed a step in the logical process, it really just matters that they can accept that there might be.</p>
+
+          <p>Finally, I do think there is value in finding the edge of the candidate's knowledge and ability. If you only ask categories of questions in which the candidate is proficient, you never establish bounds for proficiency. <a href="https://www.nytimes.com/interactive/2015/07/03/upshot/a-quick-puzzle-to-test-your-problem-solving.html">There is value in testing for the negative</a>. And, back to the communication ability, there is value in being able to talk to a candidate when they don't know how to do something. At some point, they will probably be asked to do something they don't know how to do. It is a bad sign if this event is met with hostility.</p>
+
+          <p>Despite some social-science research suggesting otherwise, I do not believe the motivation for asking these types of problems is necessarily rooted in narcissism or sadism. I think there is value in separating the tests for how much in-field background knowledge a candidate has and the tests for specific skills relevant to the role a candidate is proficient in. In particular, if being able to estimate by making and testing a set of assumptions is important (in my mind, it is in most R&D engineering roles), then I highly recommend asking a Fermi problem. I think this advice holds 90% of the time--let's work through why together.</p>
+          
+
+        </div>
+      </div>
+    </div>
+  </article>
+
+  <hr>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 col-md-10 mx-auto">
+          <ul class="list-inline text-center">
+            <li class="list-inline-item">
+              <a href="https://scholar.google.com/citations?user=9Tc8kSsAAAAJ&hl=en">
+                <span class="fa-stack fa-lg">
+                  <i class="fas fa-circle fa-stack-2x"></i>
+                  <i class="fas fa-graduation-cap fa-stack-1x fa-inverse" ></i>
+                </span>
+              </a>
+            </li>
+            <li class="list-inline-item">
+              <a href="https://www.linkedin.com/in/matthewstreshinsky/">
+                <span class="fa-stack fa-lg">
+                  <i class="fas fa-circle fa-stack-2x"></i>
+                  <i class="fab fa-linkedin-in fa-stack-1x fa-inverse"></i>
+                </span>
+              </a>
+            </li>
+            <li class="list-inline-item">
+              <a href="https://www.instagram.com/mstresh/">
+                <span class="fa-stack fa-lg">
+                  <i class="fas fa-circle fa-stack-2x"></i>
+                  <i class="fab fa-instagram fa-stack-1x fa-inverse"></i>
+                </span>
+              </a>
+            </li>
+          </ul>
+          <p class="copyright text-muted">&copy; Matt Streshinsky 2021</p>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Bootstrap core JavaScript -->
+  <script src="/vendor/jquery/jquery.min.js"></script>
+  <script src="/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+  <!-- Custom scripts for this template -->
+  <script src="/js/clean-blog.min.js"></script>
+
+</body>
+
+</html>
