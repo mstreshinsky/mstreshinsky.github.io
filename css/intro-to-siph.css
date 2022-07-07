@@ -1,0 +1,107 @@
+#dc:hover #dc_hover {
+  display: none;
+}
+#dc:hover #dc_top {
+  stroke: blue
+}
+#dc:hover #dc_bot {
+  stroke: blue
+}
+#dc:hover {
+  cursor: ew-resize;
+}
+
+#phase:hover #phase_hover {
+  display: none;
+}
+#phase:hover #eo_volt {
+  fill: blue
+}
+#phase:hover {
+  cursor: ew-resize;
+}
+
+#dl0_ckt:hover #dl0_hover {
+  display: none;
+}
+#dl0_ckt:hover #dl0_0 {
+  fill: blue
+}
+#dl0_ckt:hover #dl0_1 {
+  fill: blue
+}
+#dl0_ckt:hover #dl0_arc1 {
+  stroke: blue
+}
+#dl0_ckt:hover #dl0_arc2 {
+  stroke: blue
+}
+#dl0_ckt:hover #dl0_arc3 {
+  stroke: blue
+}
+#dl0_ckt:hover {
+  cursor: ns-resize;
+}
+
+
+#dl1:hover #dl1_hover {
+  display: none;
+}
+#dl1:hover {
+  cursor: ns-resize;
+}
+#dl1_ckt0:hover #dl1_0 {
+  fill: blue
+}
+#dl1_ckt0:hover #dl1_1 {
+  fill: blue
+}
+#dl1_ckt0:hover #dl1_arc1 {
+  stroke: blue
+}
+#dl1_ckt0:hover #dl1_arc2 {
+  stroke: blue
+}
+#dl1_ckt0:hover #dl1_arc3 {
+  stroke: blue
+}
+#dl1_ckt1:hover #dl1_2 {
+  fill: blue
+}
+#dl1_ckt1:hover #dl1_3 {
+  fill: blue
+}
+#dl1_ckt1:hover #dl1_arc4 {
+  stroke: blue
+}
+#dl1_ckt1:hover #dl1_arc5 {
+  stroke: blue
+}
+#dl1_ckt1:hover #dl1_arc6 {
+  stroke: blue
+}
+#dl1_ckt2:hover #dl1_4 {
+  fill: blue
+}
+#dl1_ckt2:hover #dl1_5 {
+  fill: blue
+}
+#dl1_ckt2:hover #dl1_arc7 {
+  stroke: blue
+}
+#dl1_ckt2:hover #dl1_arc8 {
+  stroke: blue
+}
+#dl1_ckt2:hover #dl1_arc9 {
+  stroke: blue
+}
+
+#mzm:hover #mzm_hover {
+  display: none;
+}
+#mzm:hover #mzm_volt {
+  fill: blue
+}
+#mzm:hover {
+  cursor: ew-resize;
+}

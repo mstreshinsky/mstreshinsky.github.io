@@ -77,27 +77,156 @@
 
           <h2 class="section-heading">Part 2.0: Building blocks</h2>
 
-          <p>Oftentimes, when someone comes up with a fabrication process for building silicon photonics wafers, they also go ahead and build a set of "building blocks." In fancy-speak, we call these building blocks part of a "design kit," or "process design kit," or "PDK" to refer to those building blocks along with guidelines for how to design circuits into their fabrication process</p>
+          <p>Oftentimes, when someone comes up with a fabrication process for building silicon photonics wafers, they also go ahead and build a set of "building blocks." In fancy-speak, we call these building blocks part of a "design kit," or "process design kit," or "PDK" to refer to those building blocks along with guidelines for how to design circuits within a certain fabrication process.</p>
 
-          <p>The set of building blocks someone could come up with are, quite literally, infinite in number. In practice, there are a couple of key functions that an engineer will implement. For the sake of this blog post, in practice, I will just talk about a couple of them. What you will quickly discover though, is that a tremendous amount of things can be combined by putting these blocks together.</p>
+          <p>The set of building blocks someone could come up with are, quite literally, infinite in number. In practice, there are a couple of key functions that an engineer will implement. For the sake of this blog post, I will just talk about a couple of them. What you will quickly discover though, is that a tremendous amount of things can be combined by putting these blocks together.</p>
 
-          <p>The waveguide</p>
+          <h3>Waveguides</h3>
 
-          <p>The splitter/combiner</p>
+          <p>Think of a waveguide just like an optical fiber (<a href="/blog/introduction-to-coherent-optical-communication-part-2.html">What is a fiber?</a>) A waveguide sends light around a chip. Oftentimes, waveguides are just rectangular tubes of material. Like an optical fiber, usually the critical element of a waveguide is to have some material with a high refractive index surrounded by another material with a lower refractive index.</p>
 
-          <p>The phase shifter</p>
+          <img src="/img/intro-to-siph/laser-focus-world-wg.png" class="mx-auto d-block" style="width: 50%;">
+          <figcaption style="font-size: small;"><p></p><a href="https://www.laserfocusworld.com/optics/article/14179072/waveguide-optics-going-beyond-classical-fiber-optics">3-D drawing of a waveguide cross-section. Image taken without permission from laserfocusworld.com</a>. </figcaption>
 
-          <p>The photodetector</p>
+          <p>Light goes in one side of a waveguide and most of it comes out the other side. For the sake of most of this blog post, I'm going to draw waveguides as 2-D images. For example, here's a single segment of a straight waveguide:</p>
+
+          <div>
+            <svg class="mx-auto d-block" viewBox="0 0 900 100" xmlns="http://www.w3.org/2000/svg">
+              <marker id="arrow" viewBox="0 0 10 10" refX="5" refY="5"
+              markerWidth="6" markerHeight="6"
+              orient="auto-start-reverse">
+                <path d="M 0 0 L 10 5 L 0 10 z" />
+              </marker>
+              <polyline points="0,75 80,75" fill="none" stroke="black" stroke-width="5" marker-end="url(#arrow)" />
+              <text x="40" y="55" text-anchor="middle">Light</text>
+              <rect x="100" y="70" width="700" height="10"/>
+              <polyline points="810,75 885,75" fill="none" stroke="black" stroke-width="5" marker-end="url(#arrow)" />
+              <text x="850" y="55" text-anchor="middle">Output</text>
+            </svg>
+          </div>
+
+          <p>Importantly, waveguides can also make turns just like a bendable optical fiber:</p>
+
+          <div>
+            <svg class="mx-auto d-block" viewBox="0 0 900 350" xmlns="http://www.w3.org/2000/svg">
+              <marker id="arrow" viewBox="0 0 10 10" refX="5" refY="5"
+              markerWidth="6" markerHeight="6"
+              orient="auto-start-reverse">
+                <path d="M 0 0 L 10 5 L 0 10 z" />
+              </marker>
+              <polyline points="0,75 80,75" fill="none" stroke="black" stroke-width="5" marker-end="url(#arrow)" />
+              <text x="40" y="55" text-anchor="middle">Light</text>
+              <!-- <rect x="100" y="70" width="700" height="10"/> -->
+              <path d="M 100, 70
+                       L 150, 70 
+                       T 250, 70
+                       T 350, 200
+                       T 450, 270
+                       T 550, 170
+                       T 600, 70
+                       T 650, 70
+                       T 700, 70
+                       L 800, 70" stroke="black" stroke-width="10" fill="none" />
+              <polyline points="810,75 885,75" fill="none" stroke="black" stroke-width="5" marker-end="url(#arrow)" />
+              <text x="850" y="55" text-anchor="middle">Output</text>
+            </svg>
+          </div>
+          
+
+          <h3>Splitters/combiners</h3>
+
+          <p>Bending waveguides is useful. If you have two waveguides next to each other and bend them near each other, light will transfer from one waveguide to the neighboring one. The amount of light transferred will depend on how close the two waveguides are and for how much length they run next to each other. This effect can be used to "split" light from one waveguide into two waveguides, as well as "combine" light from two waveguides into one waveguide. Try dragging the length of this directional coupler so that all of the light goes into Output 2:</p>
+
+          <div>
+            <svg class="mx-auto d-block" viewBox="0 0 850 350" xmlns="http://www.w3.org/2000/svg" id="dc">
+              <marker id="arrow" viewBox="0 0 10 10" refX="5" refY="5"
+              markerWidth="6" markerHeight="6"
+              orient="auto-start-reverse">
+                <path d="M 0 0 L 10 5 L 0 10 z" />
+              </marker>
+              <polyline points="0,75 80,75" fill="none" stroke="black" stroke-width="5" marker-end="url(#arrow)" />
+              <text x="40" y="55" text-anchor="middle">Light</text>
+              <polyline points="100,70 150,70 200,150 210,150 400,150 450,70, 600,70" fill="none" stroke="black" stroke-width="10" id="dc_top" />
+              <polyline points="100,250 150,250 200,170 210,170 400,170 450,250 600,250" fill="none" stroke="black" stroke-width="10" id="dc_bot" />
+              <polyline points="610,75 685,75" fill="none" stroke="black" stroke-width="5" marker-end="url(#arrow)" />
+              <text x="650" y="55" text-anchor="middle">Output 1</text>
+              <polyline points="610,255 685,255" fill="none" stroke="black" stroke-width="5" marker-end="url(#arrow)" />
+              <text x="650" y="235" text-anchor="middle">Output 2</text>
+              <rect x="710" y="25" width="100" height="100" opacity="0.5" id="dc_top_out" />
+              <rect x="710" y="210" width="100" height="100" opacity="0.5" id="dc_bot_out" />
+
+              <text x="300" y="100" text-anchor="middle" font-family="helvetica" font-size="20pt" class="draggable" id="dc_hover" >Click and drag!</text>
+
+            </svg>
+          </div>
+
+          <h3>Phase shifters</h3>
+
+          <p>Phase shifters are perhaps the most important capability for silicon photonics. A phase shifter is a device whose refractive index can be manipulated by an applied electrical signal, a change in temperature, or some other mechanism. This part might be hard to wrap your head around. Light is a wave with an amplitude (how bright it is) and wavelength (what color it is). In a vacuum, if light propagates 1 wavelength of distance, then it will have gone through a full 360° of phase change (and so the net change in phase is 0°). If it propagates through a thousand wavelengths, it still effectively has not changed in phase. Instead, if it passes through 1/4 of a wavelength, then it will have changed 90° in phase from start to finish (360 / 4 = 90).</p>
+          
+          <p>Changing refractive index can be called a change in phase because it changes the effective distance that light is travelling. Drag the voltage applied to the phase shifter below. Notice how as you change the refractive index, the phase of the output changes.</p>
+
+          <div class="draggable">
+            <svg class="mx-auto d-block" viewBox="0 0 700 500" xmlns="http://www.w3.org/2000/svg" id="phase">
+              <marker id="arrow" viewBox="0 0 10 10" refX="5" refY="5"
+              markerWidth="6" markerHeight="6"
+              orient="auto-start-reverse">
+                <path d="M 0 0 L 10 5 L 0 10 z" />
+              </marker>
+              <rect x="100" y="50" width="500" height="200" opacity="0.2" id="eo_block" />
+              <path fill="none" stroke="blue" stroke-width="2"
+                d="M 10,150
+                  Q 25,50 40,150
+                  t 30,0 30,0" />
+              <path fill="none" stroke="blue" stroke-width="2" id="eo_phase_block"
+                d="M 100,150
+                  Q 112.5,250 125,150
+                  t 25,0 25,0 25,0 25,0 25,0 25,0 25,0 25,0 25,0 25,0 25,0 25,0 25,0 25,0 25,0 25,0 25,0 25,0 25,0 25,0" />
+              <rect x="600" y="90" width="100" height="120" fill="white" />
+              <!-- <path fill="none" stroke="blue" stroke-width="2" 
+              transform="translate(-50 0)"
+              d="M 600,150
+                Q 615,50 630,150
+                t 30,0 30,0 30,0 30,0" /> -->
+              <polyline points="0,75 80,75" fill="none" stroke="blue" stroke-width="2" id="eo_phase_out" />          
+              <polyline points="0,75 80,75" fill="none" stroke="black" stroke-width="5" marker-end="url(#arrow)" />
+              <text x="40" y="55" text-anchor="middle">Light</text>
+              <text x="350" y="40" text-anchor="middle">phase shifter</text>
+              <polyline points="610,75 685,75" fill="none" stroke="black" stroke-width="5" marker-end="url(#arrow)" />
+              <text x="650" y="55" text-anchor="middle">Output</text>
+
+              <path d="M 225 450 a 125 125 -22.5 0 1 250 0 " fill="none" stroke="black" stroke-width="2" />
+              <rect x="175" y="300" width="350" height="150" fill="none" stroke="black" stroke-width="5" />
+              <path d="M175 460 l -40,0 0,-205 10,0 0,5, -20,0, 0,-10" fill="none" stroke="black" stroke-width="10" />
+              <path d="M525 460 l 40,0 0,-205 10,0 0,5, -20,0, 0,-10" fill="none" stroke="black" stroke-width="10" />
+              
+              <rect x="200" y="425" width="300" height="22" fill="white" stroke="white" />
+              <polygon points="-10,0 0,-125 10,0" fill="black" transform="translate(350 460) rotate(-0)" id="eo_volt" />   
+              <rect x="175" y="450" width="350" height="25" fill="black" stroke="black" stroke-width="2" />
+
+              <text x="350" y="275" text-anchor="middle" font-family="helvetica" font-size="20pt" class="draggable" id="eo_hover" >Click and drag!</text>
+
+            </svg>
+          </div>
+
+          <p></p>
+
+          <h3>Photodetectors</h3>
+
+          <p>Opposite from phase shifters (taking an electrical signal and changing a property of an optical signal) are photodetectors (taking an optical signal and generating an electrical signal). The gist of a photodetector is that a particle of light, a photon, gets absorbed by the photodetector and generates a particle of electricty, an electron. In an ideal case, every photon generates one electron.</p>
+
+          <p>Brighter light is essentially more photons per second. An electrical current is essentially the number of electrons flowing per second. If each photon generates an electron, then our photodetector takes an optical input and generates an electrical current based on how bright the optical input is.</p>
 
           <h2 class="section-heading">Part 2.1: Blocks on blocks on blocks</h2>
 
-          <p>Once we move past individual building blocks, engineers often assemble these blocks into standard functions:</p>
+          <p>Once we move past individual building blocks, engineers often assemble these blocks into standard functions, such as: optical filters, modulators, and complete optical links.</p>
 
-          <p>Optical Filters</p>
+          <h3>Optical Filters</h3>
 
+          <p>There are many different ways to build an optical filter out of silicon photonics building blocks. One way to do it is to use the splitter/combiner building block, and connect two of them together with the waveguide building blocks. By making one of the connections longer than the other, certain colors of light will create constructive or destructive interference patterns. Changing the size of the imbalance will change the interference pattern. Try it out yourself by dragging the long waveguide in the image. See if you can adjust the length so that only green light passes through the filter, while orange and blue light is mostly blocked:</p>
 
-
-          <div class="mzi">
+          <!-- DL0 SVG -->
+          <div class="draggable">
             <svg id="dl0_ckt" class="mzi_circuit" class="mx-auto d-block" viewBox="0 0 900 500" xmlns="http://www.w3.org/2000/svg">
               <marker id="arrow" viewBox="0 0 10 10" refX="5" refY="5"
               markerWidth="6" markerHeight="6"
@@ -120,6 +249,9 @@
               <rect x="700" y="70" width="100" height="10"/>
               <polyline points="810,75 885,75" fill="none" stroke="black" stroke-width="5" marker-end="url(#arrow)" />
               <text x="850" y="55" text-anchor="middle">Output</text>
+
+              <text x="450" y="475" text-anchor="middle" font-family="helvetica" font-size="20pt" class="draggable" id="dl0_hover" >Click and drag!</text>
+
             </svg>
           </div>
 
@@ -142,19 +274,174 @@
             </svg>
           </div>
 
-          <p>Optical modulators</p>
+          <p>We can create even more complicated filter shapes by cascading many of these elements together in a row. Try it out on this next filter featuring three different filters placed in a row with one another:</p>
+
+
+          <!-- DL1 SVG -->
+
+          <div class="draggable">
+            <svg class="mzi_circuit" class="mx-auto d-block" viewBox="0 0 2100 500" xmlns="http://www.w3.org/2000/svg" pointer-events="bounding-box" id="dl1">
+              <g transform="translate(0,0)" id="dl1_ckt0">
+                  <rect fill-opacity="0.0" x="150" y="0" height="500" width="600" fill="black" />
+                  <marker id="arrow" viewBox="0 0 10 10" refX="5" refY="5"
+                  markerWidth="6" markerHeight="6"
+                  orient="auto-start-reverse">
+                  <path d="M 0 0 L 10 5 L 0 10 z" />
+                  </marker>
+                  <polyline points="0,75 80,75" fill="none" stroke="black" stroke-width="5" marker-end="url(#arrow)" />
+                  <text x="40" y="55" text-anchor="middle">Light</text>
+                  <rect x="100" y="70" width="100" height="10"/>
+                  <rect x="200" y="0" width="150" height="150"/>
+                  <text x="275" y="75" text-anchor="middle" fill="white">Splitter</text>
+                  <path id="dl1_arc1" d="M 350 100 A 75 75 180 0 1 250 200" stroke="black" stroke-width="10" fill="transparent"/>
+                  <rect class="dl" id="dl1_0" x="395" y="175" width="10" height="200"/>
+                  <rect class="dl" id="dl1_1" x="495" y="175" width="10" height="200"/>
+                  <path id="dl1_arc2" d="M 425 275 A 75 75 -180 0 1 550 400" stroke="black" stroke-width="10" fill="transparent"/>
+                  <path id="dl1_arc3" d="M 525 175 A 75 75 -180 0 1 550 400" stroke="black" stroke-width="10" fill="transparent"/>
+                  <rect x="550" y="0" width="150" height="150"/>
+                  <text x="625" y="75" text-anchor="middle" fill="white">Combiner</text>
+                  <rect x="350" y="20" width="200" height="10"/>
+                  <rect x="700" y="70" width="100" height="10"/>
+                  <polyline points="810,75 885,75" fill="none" stroke="black" stroke-width="5" marker-end="url(#arrow)" />
+                  <text x="850" y="55" text-anchor="middle">Output</text>
+              </g>
+              <g transform="translate(600,0)" id="dl1_ckt1">
+                  <rect fill-opacity="0.0" x="150" y="0" height="500" width="600" fill="black" />
+                  <marker id="arrow" viewBox="0 0 10 10" refX="5" refY="5"
+                  markerWidth="6" markerHeight="6"
+                  orient="auto-start-reverse">
+                  <path d="M 0 0 L 10 5 L 0 10 z" />
+                  </marker>
+                  <polyline points="0,75 80,75" fill="none" stroke="black" stroke-width="5" marker-end="url(#arrow)" />
+                  <text x="40" y="55" text-anchor="middle">Light</text>
+                  <rect x="100" y="70" width="100" height="10"/>
+                  <rect x="200" y="0" width="150" height="150"/>
+                  <text x="275" y="75" text-anchor="middle" fill="white">Splitter</text>
+                  <path id="dl1_arc4" d="M 350 100 A 75 75 180 0 1 250 200" stroke="black" stroke-width="10" fill="transparent"/>
+                  <rect class="dl" id="dl1_2" x="395" y="175" width="10" height="200"/>
+                  <rect class="dl" id="dl1_3" x="495" y="175" width="10" height="200"/>
+                  <path id="dl1_arc5" d="M 425 275 A 75 75 -180 0 1 550 400" stroke="black" stroke-width="10" fill="transparent"/>
+                  <path id="dl1_arc6" d="M 525 175 A 75 75 -180 0 1 550 400" stroke="black" stroke-width="10" fill="transparent"/>
+                  <rect x="550" y="0" width="150" height="150"/>
+                  <text x="625" y="75" text-anchor="middle" fill="white">Combiner</text>
+                  <rect x="350" y="20" width="200" height="10"/>
+                  <rect x="700" y="70" width="100" height="10"/>
+                  <polyline points="810,75 885,75" fill="none" stroke="black" stroke-width="5" marker-end="url(#arrow)" />
+                  <text x="850" y="55" text-anchor="middle">Output</text>
+              </g>
+              <g transform="translate(1200,0)" id="dl1_ckt2">
+                  <rect fill-opacity="0.0" x="150" y="0" height="500" width="600" fill="black" />
+                  <marker id="arrow" viewBox="0 0 10 10" refX="5" refY="5"
+                  markerWidth="6" markerHeight="6"
+                  orient="auto-start-reverse">
+                  <path d="M 0 0 L 10 5 L 0 10 z" />
+                  </marker>
+                  <polyline points="0,75 80,75" fill="none" stroke="black" stroke-width="5" marker-end="url(#arrow)" />
+                  <text x="40" y="55" text-anchor="middle">Light</text>
+                  <rect x="100" y="70" width="100" height="10"/>
+                  <rect x="200" y="0" width="150" height="150"/>
+                  <text x="275" y="75" text-anchor="middle" fill="white">Splitter</text>
+                  <path id="dl1_arc7" d="M 350 100 A 75 75 180 0 1 250 200" stroke="black" stroke-width="10" fill="transparent"/>
+                  <rect class="dl" id="dl1_4" x="395" y="175" width="10" height="200"/>
+                  <rect class="dl" id="dl1_5" x="495" y="175" width="10" height="200"/>
+                  <path id="dl1_arc8" d="M 425 275 A 75 75 -180 0 1 550 400" stroke="black" stroke-width="10" fill="transparent"/>
+                  <path id="dl1_arc9" d="M 525 175 A 75 75 -180 0 1 550 400" stroke="black" stroke-width="10" fill="transparent"/>
+                  <rect x="550" y="0" width="150" height="150"/>
+                  <text x="625" y="75" text-anchor="middle" fill="white">Combiner</text>
+                  <rect x="350" y="20" width="200" height="10"/>
+                  <rect x="700" y="70" width="100" height="10"/>
+                  <polyline points="810,75 885,75" fill="none" stroke="black" stroke-width="5" marker-end="url(#arrow)" />
+                  <text x="850" y="55" text-anchor="middle">Output</text>
+              </g>
+              <text x="1050" y="480" text-anchor="middle" font-family="helvetica" font-size="50pt" class="draggable" id="dl1_hover" >Click and drag!</text>
+            </svg>
+          </div>
+
+          <!-- MZI 1 Plot -->
+          <div class="dl1_sine">
+            <svg class="mzi0-plot" class="mx-auto d-block" viewBox="0 0 1000 500" xmlns="http://www.w3.org/2000/svg">
+              <rect x="100" y="402" width="800" height="2" />
+              <rect x="98" y="100" width="2" height="303" />
+              <text text-anchor="middle" transform="translate(90,250) rotate(-90)">Transmission</text>
+              <text x="50%" y="425" text-anchor="middle">Color</text>
+              <linearGradient id="dl1_rainbow"x1="0%" y1="0%" x2="100%" y2="0">
+                <stop offset="0%" style="stop-color:red"/>
+                <stop offset="20%" style="stop-color:orange"/>
+                <stop offset="40%" style="stop-color:yellow;"/>
+                <stop offset="60%" style="stop-color:green;"/>
+                <stop offset="80%" style="stop-color:blue;"/>
+                <stop offset="100%" style="stop-color:purple;"/>
+              </linearGradient>
+              <polyLine id="dl1_polyline" fill="url(#dl1_rainbow)" />
+            </svg>
+          </div>
+
+
+          <h3>Modulators</h3>
+
+          <p>An optical modulator is a device that "modulates" some property of light. Often, the property being modulated is how bright light is in order to transmit information. We can encode information onto light by turning the light on and off in specific patterns and with regular timing. For example, "off-on-on-off-off-off-off-on" could be the letter "a" and "off-on-on-off-off-off-on-off" could be the letter "b."</p>
+
+          <p>One common way to create an optical modulator is to insert the phase shifter from before between a splitter and combiner. This way, by changing the voltage on the phase shifter, we can change the brightness of the light coming out the other end:</p>
+
+          <div class="draggable">
+            <svg id="mzm" class="mzi_circuit" class="mx-auto d-block" viewBox="0 0 1200 400" xmlns="http://www.w3.org/2000/svg">
+              <marker id="arrow" viewBox="0 0 10 10" refX="5" refY="5"
+              markerWidth="6" markerHeight="6"
+              orient="auto-start-reverse">
+                <path d="M 0 0 L 10 5 L 0 10 z" />
+              </marker>
+              <polyline points="0,75 80,75" fill="none" stroke="black" stroke-width="5" marker-end="url(#arrow)" />
+              <text x="40" y="55" text-anchor="middle">Light</text>
+              <rect x="100" y="70" width="50" height="10"/>
+              <rect x="150" y="0" width="150" height="150"/>
+              <text x="225" y="75" text-anchor="middle" fill="white">Splitter</text>
+              
+              
+              <rect x="300" y="20" width="500" height="10"/>
+              <rect x="300" y="110" width="25" height="10"/>
+              <rect x="325" y="90" width="450" height="50" opacity="0.5" id="mzm_block" />
+              <text x="550" y="120" text-anchor="middle" fill="black">Phase Shifter</text>
+              <rect x="775" y="110" width="25" height="10"/>
+
+              <rect x="800" y="0" width="150" height="150"/>
+              <text x="875" y="75" text-anchor="middle" fill="white">Combiner</text>
+
+              <rect x="950" y="70" width="50" height="10"/>
+              <polyline points="1010,75 1075,75" fill="none" stroke="black" stroke-width="5" marker-end="url(#arrow)" />
+              <text x="1050" y="55" text-anchor="middle">Output</text>
+
+              <rect x="1100" y="25" width="100" height="100" opacity=0.5 id="mzm_out" />
+
+              <path d="M 425 350 a 125 125 -22.5 0 1 250 0 " fill="none" stroke="black" stroke-width="2" />
+              <rect x="375" y="200" width="350" height="150" fill="none" stroke="black" stroke-width="5" />
+              <path d="M375 350 l -40,0 0,-205 10,0 0,5, -20,0, 0,-10" fill="none" stroke="black" stroke-width="10" />
+              <path d="M725 350 l 40,0 0,-205 10,0 0,5, -20,0, 0,-10" fill="none" stroke="black" stroke-width="10" />
+              <rect x="400" y="325" width="300" height="22" fill="white" stroke="white" />
+              <polygon points="-10,0 0,-125 10,0" fill="black" transform="translate(550 360) rotate(-0)" id="mzm_volt" />   
+              <rect x="375" y="350" width="350" height="25" fill="black" stroke="black" stroke-width="2" />
+
+              <text x="950" y="250" text-anchor="middle" font-family="helvetica" font-size="30pt" class="draggable" id="mzm_hover" >Click and drag!</text>
+
+            </svg>
+          </div>
+          <p></p>
+
+          <h3>And beyond</h3>
+
+          <p>With just these few building blocks, a nearly infinite number of optical functions are possible. With just the waveguide, splitter, phase shifter, and photodetector you can construct anything from analog optical neural networks, <a href="/blog/introduction-to-coherent-optical-communication-part-3.html">coherent optical links</a>, LIDAR phased array scanners, optical quantum computers, and things not yet invented yet.</p>
+
+          <p>That's gotta be pretty exciting, right?</p>
 
           <h2 class="section-heading">Part 2.3: Beyond the hype</h2>
 
-          <p>So silicon photonics is pretty great, right? Well, as of early 2022, there is a good reason that all of the products based on this technology that have reached commercial success are all built for optical communication inside telecommunications or data center networks.  In general, the types of chips built for most optical communications applications are relatively simple in what they do. There are usually up to four devices on a chip that can modulate the intensity of light passing through them, a few devices to split or combine light, up to four photodetectors, a method to get light from the chip into a fiber optic cable, and some sub-assembly for a light source. Even with generous methods for determining what "counts" as a device, the number of optical devices integrated onto a single chip puts most commercial silicon photonics chips somewhere in the 1960s compared to the number of transistors on computer chips. By the 1970s, several thousand devices were on the chips being produced by Intel, IBM, and others. 
-            https://en.wikipedia.org/wiki/Transistor_count </p>
+          <p>So silicon photonics is pretty great, right? Well, as of early 2022, there is a good reason that all of the products based on this technology that have reached commercial success are all built for optical communication inside telecommunications or data center networks.  In general, the types of chips built for most optical communications applications are relatively simple in what they do. There are usually up to four devices on a chip that can modulate the intensity of light passing through them, a few devices to split or combine light, up to four photodetectors, a method to get light from the chip into a fiber optic cable, and some sub-assembly for a light source. Even with generous methods for determining what "counts" as a device, the number of optical devices integrated onto a single chip puts most commercial silicon photonics chips somewhere in the 1960s compared to the number of transistors on computer chips. <a href="https://en.wikipedia.org/wiki/Transistor_count">By the 1970s, several thousand devices were on the chips being produced by Intel, IBM, and others</a>. It isn't yet clear if any silicon photonics products will emerge in the next decade with thousands of elements on a chip.</p>
             
-            <p>There's a tremendous amount of engineering effort that goes into designing those silicon photonics chips for optical communication. The two fundamental challenges with photonics, generally, is that it is very hard to do anything with a small amount of light and every component that light passes through loses some of it. With electronic computer chips, you can use a tiny amount of electronic charge to flip a switch--there really isn't an equivalent thing in the optical world. While there are demonstrations showing data transmission with a single-digit number of photons per bit, it takes an enormous series of electronic amplifiers to do anything meaningful with those singular photons. In terms of losing light, if you have 15 things that are all 95% transparent, you've lost more than half your light coming out the other side of those 15 things. </p>
-            
-            <p>In the silicon photonics world, 95% transparent is really good for most things. But now, say you have one element to bring your light from an optical fiber onto your chip, two elements to split your light four ways, three elements to modulate your light, one element to tap off a bit of your light to monitor how much of it there is, and another 4 elements to combine your light back together. This imaginary chip exists mostly for the sake of argument, but at the end of those 11 things you now have only 56% of your light left! Losing 56% of your light would still be one of the world's best chips for optical communication because achieving 95% transparency for each of those devices is a feat of engineering. </p>
-            
-            <p>The trick for the silicon photonics industry will be designing better and better quality devices to take that 95% up to 99%. With a set of devices that is 99% transparent, now you can use 70 different elements in a row instead of 15 and still have half your light leftover. I think this kind of performance is possible and will only be a matter of time before we see remarkably complicated systems. Until then, everything we build just has to be content with throwing away most of your light to do anything with it.
-            </p>
+          <p>There's a tremendous amount of engineering effort that goes into designing those silicon photonics chips for optical communication. The two fundamental challenges with photonics, generally, is that it is very hard to do anything with a small amount of light and every component that light passes through loses some of it. With electronic computer chips, you can use a tiny amount of electronic charge to flip a switch--there really isn't an equivalent thing in the optical world. While there are demonstrations showing data transmission with a single-digit number of photons per bit, it takes an enormous series of electronic amplifiers to do anything meaningful with those singular photons. In terms of losing light, if you have 15 things that are all 95% transparent, you've lost more than half your light coming out the other side of those 15 things. (95% * 95% * 95% ... 15 times = 46%) </p>
+          
+          <p>In the silicon photonics world, 95% transparent is really good for most things. But now, say you have one element to bring your light from an optical fiber onto your chip, two elements to split your light four ways, three elements to modulate your light, one element to tap off a bit of your light to monitor how much of it there is, and another 4 elements to combine your light back together. This imaginary chip exists mostly for the sake of argument, but at the end of those 11 things you now have only 56% of your light left! Losing 56% of your light would still be one of the world's best chips for optical communication because achieving 95% transparency for each of those devices is a feat of engineering. </p>
+          
+          <p>The trick for the silicon photonics industry will be designing better and better quality devices to take that 95% up to 99%. With a set of devices that is 99% transparent, now you can use 70 different elements in a row instead of 15 and still have half your light leftover. I think this kind of performance is possible and will only be a matter of time before we see remarkably complicated systems. Until then, everything we build just has to be content with throwing away most of your light to do anything with it.
+          </p>
 
 
         </div>
