@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <script async defer data-website-id="bad1567f-ffde-4b0e-adec-3232b5028e98" src="https://analytics.chemecse.io/umami.js"></script>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <title>A few specific mistakes I have made in hardware R&D startups Part 1: Assuming things will work</title>
+
+  <!-- Bootstrap core CSS -->
+  <link href="/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Custom fonts for this template -->
+  <link href="/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+  <link href='https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+
+  <!-- Custom styles for this template -->
+  <link href="/css/clean-blog.min.css" rel="stylesheet">
+
+</head>
+
+<body>
+
+  <!-- Navigation -->
+  <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
+    <div class="container">
+      <a class="navbar-brand" href="/">M.STRE.SH</a>
+      <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+        Menu
+        <i class="fas fa-bars"></i>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarResponsive">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="/">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/about.html">About</a>
+          </li>
+          <!-- <li class="nav-item">
+            <a class="nav-link" href="contact.html">Contact</a>
+          </li> -->
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Page Header -->
+  <header class="masthead" style="background-image: url('/img/NUS-001_chip2.jpg')">
+    <div class="overlay"></div>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 col-md-10 mx-auto">
+          <div class="post-heading">
+            <h1>A few specific mistakes I have made in hardware R&D startups</h1>
+            <h2 class="subheading">Part 1: Assuming things will work</h2>
+            <span class="meta">Jan 31, 2022</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Post Content -->
+  <article>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 col-md-10 mx-auto">
+          <p>This series is a tragedy in many parts. Not least of which is the tragedy of needing a dopamine hit from publishing a new blog post. Also, none of the parts are revealing information protected by a confidentiality agreement.</p>
+
+          <p>Making mistakes in semiconductor hardware research and development is particularly painful in relation to other electrical engineering and adjacent disciplines *cough* software *cough*. (Ok, we in the semiconductor world don't have it the worst. A bridge failing would be awful. Or a satellite. You civil and aerospace engineers have my sympathy.) In semiconductor chip design, you figure out what sort of chip you should design, you go and design it, you wait two to six months for the chip to come back, then you start a laborious process of figuring out whether it worked or not while simultaneously trying to design the next chip. It all takes a while. There's a few ways you can wait all that time and have it go wrong.</p>
+
+          <p>Often, when I interview candidates, I might ask about a time they made a mistake. One of the most common mistakes I hear is something about assuming things will work. Particularly, it seems to be part of a maturation process for most junior scientists & engineers that leads to a trust-but-verify attitude, something like:  "Fool me once, shame on you. Fool me--can't get fooled again," or something like that. (Remember when this was a gaffe?). I, too, passed through the land of assumptions and fallacies.</p>
+
+          <p>Years ago, we were building one of our first products as a team and had decided to purchase one of the critical elements of the product from another vendor. Coming out of the design phase, we were sure that we had captured all the requirements and specs. However, also near the end of the design, our end-user & application folks realized that the product wouldn't pass one of the critical use cases as-is.</p>
+
+          <p>Fortunately, the element we were purchasing from a 3rd party had another operating mode that we thought would work based on the datasheet. In fact, after brief investigations, we learned that our competitors used these kinds of elements in exactly this new operating mode and were successfully deploying products based on them in the field. The specs on the datasheet looked good, and it was a relatively simple change in the manufacturing process to switch to the new operating mode. We could continue to build the product without incurring any delays. Perfect.</p>
+
+          <p>All of this goes on while we tool up to ramp up into production. There are some late nights and multiple visits to a contract manufacturer's site to stand up the assembly and final test process for this product. There are roundtrip flights to East and Southeast Asia where material is passed from one process step to the next by hand to minimize any possible delays and where the time physically in the air is longer than the time physically on the ground. This isn't uncommon: engineers all the way up to senior executives regularly hand-carry parts back to their home offices that are fresh off the assembly line. Hopping on a consumer flight is often the most reliable way within a reasonable budget to make sure goods move around the world (Southwest Airlines, notwithstanding).</p>
+
+          <p>Ok, but really, this could be a great movie. A friend of mine recently proposed the following thriller film, to which I added embellishments: A highly advanced semiconductor chip is being transported by hand. It's for a secretive 3-letter agency in the U.S. capable of something super advanced (Encryption cracking? Artificial intelligence? Actually nothing but the terrorists don't know that?) A team of terrorists hijacks the private plane mid-air with wingsuits and lasers used to cut holes in the door of the plane. Soon, Ethan Hunt, James Bond, Jason Bourne, and the real-life Jason Momoa get the call to action (there's gonna be a sweet free-solo climbing chase scene like in the Point Break sequel but better). I will gladly option these film rights to whoever is interested. Hit me up.</p>
+          
+          <p>I made one of these trips myself. It's... not as cool as it could be in the movies.</p>
+
+          <p>Months of manufacturing go by. The day finally comes. There is a team of four of us at our contract manufacturer's site ready to stand-by and debug any problems that might show up. It's the morning and we are eagerly waiting in a parking lot outside their building in a nondescript technology park. It's 9am, but already the heat and humidity has my shirt clinging to my back. A morning haze lingers in the sky. One of the project managers from our contract manufacturer drives up. He's fresh off an international plane flight and hands us his handbag. It's filled with the very first samples of product that are intended to go through our final test procedure in the factory. </p>
+
+          <p>"This is going to work, right?" he says. I try to make small talk, but with his mission accomplished, the project manager hops back in his car. He drives off as abruptly as his arrival. Presumably to sleep, but perhaps to sleep off his efforts after defending our project against an elite heist squad.</p>
+
+          <p>Inside the building now, we insert one each of the product into the variety of electro-optic test stations we have ready. The room is too large. A few racks of equipment are stationed in the middle of a beige-tiled and off-beige-walled room. The racks contain our systems meant to test each product as they come off the line to make sure it functions before being shipped to customers. We've worked for the past several months to get these test stations into as "production-ready" shape as we could muster without actually having a realistic product to test. To a large degree, this required guesswork and imagination. Mostly the latter, as most of us working on this project had never built a product like this before. We devised tests for as many ways as we could imagine that our hardware might fail.</p>
+
+          <p>Once the tests are kicked off, there isn't much for us to do but sit or stand around and watch the various progress bars tick along. The five of us from our company sit in a nearby conference room. We can see the technicians through a window watching the same progress bars. I pull up my email and pretend to work. Everyone else manages to look busy, concentrating on their own laptops.</p>
+
+          <p>We get a green light from the first test--great. Same for the second one an hour later. The tests take a long time. There's lots to test on each of our chips and we wanted to be careful not to let anything slip by. The third station follows number two within fifteen minutes with another green light. We hurry to get more units loaded into each complete test. Passing the tests is the default state. I start to question why we bothered to bring five of us engineers out here. </p>
+
+          <p>We glance over to our left, Test Station Four has a red square displayed on the screen where we really hoped it would have been green. Maybe it was just a bad apple. We pop in a different unit to test. I pretend to work for another hour. Another glaring red square is printed on the screen. Well, this wasn't unexpected--our software scripts to initiate and analyze the results weren't going to be full-proof. We copy the saved logs to a USB stick and pop in another unit to kick off another test. It was time to see what went wrong.</p>
+
+          <p>Hours later, we were certain. There was a fundamental problem with the product and no immediate way to get these into customers' hands. I sent the email to the team. How did we get here and what should we have done next?</p>
+
+          <p>We should have checked. Just because this operating mode was being used by nearly every other competitor for this kind of product didn't mean this particular vendor's version would work flawlessly. We had had time. We could have fashioned together some sort of experiment to exercise the element against its specifications. We could have asked the vendor for tests of their own. But we did none of those things and now we went from being on-time to delayed indefinitely.</p>
+        </div>
+      </div>
+    </div>
+  </article>
+
+  <hr>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 col-md-10 mx-auto">
+          <ul class="list-inline text-center">
+            <li class="list-inline-item">
+              <a href="https://scholar.google.com/citations?user=9Tc8kSsAAAAJ&hl=en">
+                <span class="fa-stack fa-lg">
+                  <i class="fas fa-circle fa-stack-2x"></i>
+                  <i class="fas fa-graduation-cap fa-stack-1x fa-inverse" ></i>
+                </span>
+              </a>
+            </li>
+            <li class="list-inline-item">
+              <a href="https://www.linkedin.com/in/matthewstreshinsky/">
+                <span class="fa-stack fa-lg">
+                  <i class="fas fa-circle fa-stack-2x"></i>
+                  <i class="fab fa-linkedin-in fa-stack-1x fa-inverse"></i>
+                </span>
+              </a>
+            </li>
+            <li class="list-inline-item">
+              <a href="https://www.instagram.com/mstresh/">
+                <span class="fa-stack fa-lg">
+                  <i class="fas fa-circle fa-stack-2x"></i>
+                  <i class="fab fa-instagram fa-stack-1x fa-inverse"></i>
+                </span>
+              </a>
+            </li>
+          </ul>
+          <p class="copyright text-muted">&copy; Matt Streshinsky 2023</p>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Bootstrap core JavaScript -->
+  <script src="/vendor/jquery/jquery.min.js"></script>
+  <script src="/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+  <!-- Custom scripts for this template -->
+  <script src="/js/clean-blog.min.js"></script>
+
+</body>
+
+</html>
